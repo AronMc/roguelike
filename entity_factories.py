@@ -10,7 +10,7 @@ player = Actor(
     name="LabMouse",
     ai_cls=HostileEnemy,
     fighter=Fighter(hp=3, defense=2, power=5),
-    inventory=Inventory(capacity=2),
+    inventory=Inventory(capacity=4),
 )
 
 mouse = Actor(
@@ -30,6 +30,20 @@ rat = Actor(
     inventory=Inventory(capacity=0)
 )
 
+confusion_gas = Item(
+    char="~",
+    color=(207, 63, 255),
+    name="Confusion Gas",
+    consumable=consumable.ConfusionConsumable(number_of_turns=2),
+)
+
+napalm_pack = Item(
+    char="~",
+    color=(255, 0, 0),
+    name="Napalm Pack",
+    consumable=consumable.NapalmDamageConsumable(damage=6, radius=2),
+)
+
 health_stim = Item(
     char="!",
     color=(127, 0, 255),
@@ -40,5 +54,5 @@ battery_pack = Item(
     char="~",
     color=(255, 255, 0),
     name="Battery Pack",
-    consumable=consumable.BatteryDamageConsumable(damage=1, maximum_range=2),
+    consumable=consumable.BatteryDamageConsumable(damage=7, maximum_range=3),
 )

@@ -63,8 +63,12 @@ def place_entities(
         if not any(entity.x == x and entity.y == y for entity in dungeon.entities):
             item_chance = random.random()
 
-            if item_chance < 0.7:
+            if item_chance < 0.6:
                 entity_factories.health_stim.spawn(dungeon, x, y)
+            elif item_chance < 0.8:
+                entity_factories.napalm_pack.spawn(dungeon, x, y)
+            elif item_chance < 0.9:
+                entity_factories.confusion_gas.spawn(dungeon, x, y)
             else:
                 entity_factories.battery_pack.spawn(dungeon, x, y)
     
