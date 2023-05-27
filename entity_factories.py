@@ -2,6 +2,7 @@ from components.ai import HostileEnemy
 from components import consumable
 from components.fighter import Fighter
 from components.inventory import Inventory
+from components.level import Level
 from entity import Actor, Item
 
 player = Actor(
@@ -11,6 +12,7 @@ player = Actor(
     ai_cls=HostileEnemy,
     fighter=Fighter(hp=3, defense=2, power=5),
     inventory=Inventory(capacity=4),
+    level=Level(level_up_base=4,)
 )
 
 mouse = Actor(
@@ -20,6 +22,7 @@ mouse = Actor(
     ai_cls=HostileEnemy,
     fighter=Fighter(hp=1, defense=0, power=3),
     inventory=Inventory(capacity=0),
+    level=Level(xp_given=1),
 )
 rat = Actor(
     char="R",
@@ -27,8 +30,9 @@ rat = Actor(
     name="Rat",
     ai_cls=HostileEnemy,
     fighter=Fighter(hp=2, defense=1, power=4),
-    inventory=Inventory(capacity=0)
-)
+    inventory=Inventory(capacity=0),
+    level=Level(xp_given=2),
+    )
 
 confusion_gas = Item(
     char="~",
