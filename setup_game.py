@@ -26,9 +26,6 @@ def new_game() -> Engine:
     room_min_size = 6
     max_rooms = 30
 
-    max_monsters_per_room = 2
-    max_items_per_room = 2
-
     player = copy.deepcopy(entity_factories.player)
 
     engine = Engine(player=player)
@@ -40,8 +37,6 @@ def new_game() -> Engine:
         room_max_size=room_max_size,
         map_width=map_width,
         map_height=map_height,
-        max_monsters_per_room=max_monsters_per_room,
-        max_items_per_room=max_items_per_room,
     )
 
     engine.game_world.generate_floor()
@@ -50,6 +45,19 @@ def new_game() -> Engine:
     engine.message_log.add_message(
         "Hello and welcome, little labmouse, to your final maze!", color.welcome_text
     )
+
+    chopper = copy.deepcopy(entity_factories.chopper)
+    cloth_armor = copy.deepcopy(entity_factories.cloth_armor)
+
+    chopper.parent = player.inventory
+    cloth_armor.parent = player.inventory
+
+    player.inventory.items.append(chopper)
+    player.equipment.toggle_equip(chopper, add_message=False)
+
+    player.inventory.items.append(cloth_armor)
+    player.equipment.toggle_equip(cloth_armor, add_message=False)
+    
     return engine
 
 def load_game(filename: str) -> Engine:

@@ -145,6 +145,6 @@ class BatteryDamageConsumable(Consumable):
                 f"A bolt of electricity strikes the {target.name} with a loud crack, for {self.damage} damage!"
             )
             target.fighter.take_damage(self.damage)
-            self.consume
+            self.consume()
         else:
             raise Impossible("No enemy is close enough to strike.")
